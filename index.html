@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Contract Interaction</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@4.0.3/dist/web3.min.js"></script>
+    <script defer src="script.js"></script>
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="max-w-2xl mx-auto p-6 mt-8 bg-white rounded-2xl shadow-lg space-y-6">
+        <h1 class="text-3xl font-bold text-center">📦 Decentralized MarketPlace</h1>
+
+        <!-- Wallet Connection -->
+        <div class="text-center">
+            <button onclick="connectWallet()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition">Connect MetaMask</button>
+            <p id="wallet" class="mt-2 text-sm text-gray-500">Not Connected</p>
+        </div>
+
+        <!-- List Item Section -->
+        <div>
+            <h2 class="text-xl font-semibold mb-2">📝 List Item</h2>
+            <div class="flex flex-col gap-3">
+                <input type="text" id="itemHashInput" placeholder="Item Hash"
+                       class="p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="number" id="priceInput" placeholder="Price in ETH"
+                       class="p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button onclick="listItem()"
+                        class="bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl transition">Add Item</button>
+            </div>
+        </div>
+
+        <!-- Purchase Section -->
+        <div>
+            <h2 class="text-xl font-semibold mb-2">💳 Purchase Item</h2>
+            <div class="flex flex-col gap-3">
+                <input type="number" id="itemIdInput" placeholder="Item ID"
+                       class="p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="flex gap-3">
+                    <button onclick="purchaseItem()"
+                            class="bg-yellow-500 hover:bg-yellow-600 text-white flex-1 py-2 rounded-xl transition">Purchase</button>
+                    <button onclick="getItemDetails()"
+                            class="bg-purple-600 hover:bg-purple-700 text-white flex-1 py-2 rounded-xl transition">Get Details</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item Count Section -->
+        <div>
+            <h2 class="text-xl font-semibold mb-2">📊 Item Count</h2>
+            <div id="itemCountDisplay" class="text-lg font-medium mb-2">Loading...</div>
+            <button onclick="getTotalItems()"
+                    class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-xl transition">Refresh Count</button>
+        </div>
+    </div>
+</body>
+</html>
